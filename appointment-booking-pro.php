@@ -3,7 +3,7 @@
  * Plugin Name: نوبت‌دهی حرفه‌ای
  * Plugin URI: https://github.com/sahandse/appointment-booking-pro
  * Description: افزونه نوبت‌دهی حرفه‌ای وردپرس با تقویم شمسی/میلادی، مدیریت خدمات، پرسنل، ساعات کاری و پنل مدیریتی مینیمال.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Sahand Rezvan
  * Author URI: https://github.com/sahandse
  * Text Domain: appointment-booking-pro
@@ -14,7 +14,7 @@
 defined('ABSPATH') || exit;
 
 final class ABP_Plugin {
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
     const OPTION  = 'abp_settings';
 
     public function __construct() {
@@ -60,6 +60,10 @@ final class ABP_Plugin {
     }
 
     public function admin_menu() {
+        if (function_exists('s_store_register_submenu')) {
+            s_store_register_submenu('appointment-booking-pro', 'نوبت‌دهی حرفه‌ای', [$this, 'settings_page'], 'manage_options', 'نوبت‌دهی حرفه‌ای');
+            return;
+        }
         add_menu_page(
             'نوبت‌دهی حرفه‌ای',
             'نوبت‌دهی',
