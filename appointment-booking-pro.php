@@ -245,6 +245,7 @@ final class ABP_Plugin {
             update_post_meta($id,'_abp_name',$name); update_post_meta($id,'_abp_phone',$phone);
             update_post_meta($id,'_abp_service',$service); update_post_meta($id,'_abp_staff',$staff);
             update_post_meta($id,'_abp_date',$date); update_post_meta($id,'_abp_time',$time);
+            apply_filters('s_store_sms_send',null,$phone,'نوبت شما برای '.$service.' در تاریخ '.$date.' ساعت '.$time.' ثبت شد.','appointment-booking');
         }
         wp_safe_redirect(add_query_arg('abp_success','1',wp_get_referer()?:home_url('/'))); exit;
     }
